@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="register-container">        
-        <h1 className="register-title"> Scrim Shop </h1>
+        <h1 className="register-title"> Controle Financeiro </h1>
         <input type="text" name="name" placeholder="Nome" className="register-input" onChange={handleChangeValues} />
         <input type="text" name="cost" placeholder="Preço" className="register-input" onChange={handleChangeValues} />
         <input type="text" name="category" placeholder="Categoria" className="register-input" onChange={handleChangeValues} />
