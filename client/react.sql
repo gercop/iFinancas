@@ -68,6 +68,7 @@ INSERT INTO db_pessoal.TB_TIPO_LANCAMENTO (descricao) VALUES ('Transferência');
 INSERT INTO db_pessoal.TB_TIPO_LANCAMENTO (descricao) VALUES ('Montante Inicial');
 INSERT INTO db_pessoal.TB_TIPO_LANCAMENTO (descricao) VALUES ('Renda Passiva');
 
+SELECT * FROM db_pessoal.TB_TIPO_LANCAMENTO;
 DROP TABLE db_pessoal.TB_TIPO_LANCAMENTO;
 CREATE TABLE db_pessoal.TB_TIPO_LANCAMENTO (
     idTipoLancamento INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -75,6 +76,7 @@ CREATE TABLE db_pessoal.TB_TIPO_LANCAMENTO (
 );
 
 SELECT * FROM db_pessoal.TB_LANCAMENTO;	 
+DELETE FROM db_pessoal.TB_LANCAMENTO WHERE idLancamento>=31;	 
 DROP TABLE db_pessoal.TB_LANCAMENTO;
 CREATE TABLE db_pessoal.TB_LANCAMENTO (	  
 	idLancamento INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -213,4 +215,5 @@ where 1=1
 	-- and month(dtLancamento)=3
     -- and idTipoLancamento=2    
 order by dtLancamento;	 
+
 

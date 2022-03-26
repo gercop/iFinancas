@@ -17,6 +17,8 @@
   margin-top: 20px;
   border: 3px solid black;
   border-radius: 5px;
+
+  text-align: center
 }
 
 .register-title {
@@ -26,6 +28,14 @@
 }
 
 .register-input {
+  width: 500px;
+  display: block;
+  margin: 10px auto;
+  padding: 7px 0;
+}
+
+.register-input-real {
+  width: 500px;
   display: block;
   margin: 10px auto;
   padding: 7px 0;
@@ -33,4 +43,5 @@
 
 .register-button {
   padding: 2px 5px;
+  display: inline-block;
 }
