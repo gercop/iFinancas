@@ -95,39 +95,6 @@ ALTER TABLE db_pessoal.TB_LANCAMENTO ADD FOREIGN KEY (idTipoLancamento) REFERENC
 ALTER TABLE db_pessoal.TB_LANCAMENTO ADD FOREIGN KEY (idConta) REFERENCES db_pessoal.TB_CONTA(idConta);
 ALTER TABLE db_pessoal.TB_LANCAMENTO ADD FOREIGN KEY (idUsuario) REFERENCES db_pessoal.TB_USUARIO(idUsuario);
 
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Montante Inicial','2021-12-31',1,1,1,142164.8);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Crédito no celular.','2022-01-05',2,1,1,-20.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Salário Data A.','2022-01-06',1,1,1,4237.1);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Auxílio Mãe','2022-01-04',3,1,1,2000.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Cartão de Crédito','2022-01-10',2,1,1,-454.62);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('IPVA 2022','2022-01-10',2,1,1,-1147.83);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Licenciamento','2022-01-10',2,1,1,-144.86);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Auxílio Mãe','2022-01-10',3,1,1,1400.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Plano de Saúde Unimed','2022-01-21',2,1,1,-867.26);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Venda do Título do Regatas','2022-01-31',3,1,1,150.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-01-01',9,1,1,681.89,0.47);
-
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Salário Data A.','2022-02-07',1,1,1,4248.8);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Auxílio Mãe','2022-02-03',3,1,1,2000.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Banho da Lobinha','2022-02-01',2,1,1,-40);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Plano de Saúde Unimed','2022-02-05',2,1,1,-439.27);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Cartão de Crédito','2022-02-10',2,1,1,-377.02);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-02-01',9,1,1,786.41,0.57);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Combustível Vectra','2022-02-05',2,1,1,-60.0);
-
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Salário Data A.','2022-03-06',1,1,1,4248.8);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Auxílio Mãe','2022-03-03',3,1,1,2900.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Auxílio Mãe','2022-03-21',3,1,1,900.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Banho da Lobinha','2022-03-01',2,1,1,-40);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Banho da Lobinha','2022-03-01',3,1,1,40);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Plano de Saúde Unimed','2022-03-02',2,1,1,-439.27);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Crédito Celular','2022-03-05',2,1,1,-20);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Cartão de Crédito','2022-03-10',2,1,1,-265.60);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-03-01',9,1,1,769.83,0.5);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Transferência - Retirada da Conta Corrente','2022-03-11',7,1,1,-160000.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor) VALUES ('Transferência - Depósito Poupança','2022-03-11',7,2,1,160000.0);
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-03-25',9,1,1,0.25,0.5);
-
 -- LANÇAMENTO TOTAL LÍQUIDO:
 SELECT round(sum(valor),2) as 'VALOR LÍQUIDO DO LANÇAMENTO'    
 FROM db_pessoal.TB_LANCAMENTO 
