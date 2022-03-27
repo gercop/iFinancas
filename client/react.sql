@@ -75,7 +75,8 @@ CREATE TABLE db_pessoal.TB_TIPO_LANCAMENTO (
     descricao VARCHAR(60) NOT NULL
 );
 
-SELECT * FROM db_pessoal.TB_LANCAMENTO;	 
+SELECT * FROM db_pessoal.TB_LANCAMENTO where idLancamento>=30;	 
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('teste','2022-03-27',1,1,1,0.25,0.5);
 DELETE FROM db_pessoal.TB_LANCAMENTO WHERE idLancamento>=31;	 
 DROP TABLE db_pessoal.TB_LANCAMENTO;
 CREATE TABLE db_pessoal.TB_LANCAMENTO (	  

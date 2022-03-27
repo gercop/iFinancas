@@ -27,7 +27,7 @@ function App() {
       descricao         : values.descricao,
       dtLancamento      : values.dtLancamento,
       idTipoLancamento  : values.idTipoLancamento,
-      idTipoConta       : values.idTipoConta,
+      idConta           : values.idConta,
       idUsuario         : values.idUsuario,
       valor             : values.valor,
       juros             : values.juros
@@ -39,7 +39,7 @@ function App() {
           descricao         : values.descricao,
           dtLancamento      : values.dtLancamento,
           idTipoLancamento  : values.idTipoLancamento,
-          idTipoConta       : values.idTipoConta,
+          idConta           : values.idConta,
           idUsuario         : values.idUsuario,
           valor             : values.valor,
           juros             : values.juros
@@ -52,28 +52,31 @@ function App() {
     <div className="app-container">
       <div className="register-container">        
         <h1 className="register-title"> Lançamentos do Controle Financeiro </h1>        
-        <input type="text" name="descricao"         placeholder="Descrição do Lançamento" className="register-input"      onChange={handleChangeValues} />
-        <input type="text" name="dtLancamento"      placeholder="Data Lançamento"         className="register-input"      onChange={handleChangeValues} />
+        <input type="text" name="descricao"    placeholder="Descrição do Lançamento" className="register-input" onChange={handleChangeValues} />
+        <input type="text" name="dtLancamento" placeholder="Data Lançamento"         className="register-input" onChange={handleChangeValues} />
 
         <select name="idTipoLancamento" className="register-input" onChange={handleChangeValues} >
-            <option value="1"selected>Receita</option>
-            <option value="2">Despesa</option>
-            <option value="3">Receita Adicional</option>
-            <option value="4">Despesa Isenta</option>
-            <option value="5">Depósito</option>
-            <option value="6">Saque</option>
-            <option value="7">Transferência</option>
-            <option value="8">Montante Inicial</option>
-            <option value="9">Renda Passiva</option>          
+            <option value='0'selected></option>
+            <option value='1'>Receita</option>
+            <option value='2'>Despesa</option>
+            <option value='3'>Receita Adicional</option>
+            <option value='4'>Despesa Isenta</option>
+            <option value='5'>Depósito</option>
+            <option value='6'>Saque</option>
+            <option value='7'>Transferência</option>
+            <option value='8'>Montante Inicial</option>
+            <option value='9'>Renda Passiva</option>          
         </select>
 
-        <select name="idTipoConta" className="register-input" onChange={handleChangeValues} >
-            <option value="1"selected>Conta Corrente</option>
-            <option value="2">Conta Poupança</option>
+        <select name="idConta" className="register-input" onChange={handleChangeValues} >
+            <option value='0'selected></option>
+            <option value='1'>Conta Corrente</option>
+            <option value='2'>Conta Poupança</option>
         </select>
 
         <select name="idUsuario" className="register-input" onChange={handleChangeValues} >
-            <option value="1"selected>Ricardo</option>         
+            <option value='0'selected></option>
+            <option value='1'>Ricardo</option>         
         </select>        
         
         <input type="text" name="valor"             placeholder="Valor"                   className="register-input-real" onChange={handleChangeValues} />
@@ -89,7 +92,7 @@ function App() {
             idLancamento  = {value.idLancamento}
             meses         = {value.meses}
             descricao     = {value.descricao}
-            dtLancamento  = {value.dtLancamento}
+            dtLancamento  = {value.dtLancamento}            
             valor         = {value.valor}
             juros         = {value.juros}
             listLanc      = {listLanc} 

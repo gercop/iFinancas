@@ -55,25 +55,6 @@ app.get("/getLancsMes", (req,res)=> {
     });
 });
 
-app.get("/getCards", (req,res)=> {
-    const idgames  = req.body.idgames;
-    const name     = req.body.name;
-    const cost     = req.body.cost;
-    const category = req.body.category;
-    
-    let SQL  = "SELECT * FROM games";
-
-    db.query(SQL, (error, result) => {
-        if (error) {
-            console.log(error);
-            res.send(result);
-        } else {
-            console.log("Registro encontrado.");
-            res.send(result);
-        }
-    });
-});
-
 app.post("/register", (req,res)=> {    
     const descricao         = req.body.descricao;
     const dtLancamento      = req.body.dtLancamento;
@@ -83,9 +64,9 @@ app.post("/register", (req,res)=> {
     const valor             = req.body.valor;
     const juros             = req.body.juros;
     
-    let SQL = "INSERT INTO TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ( 'teste', ?, ?, ?, ?, ?, ? )";
+    let SQL = "INSERT INTO TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ( ?, ?, ?, ?, ?, ?, ? )";
 
-    db.query(SQL, [dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros], (error, result) => {
+    db.query(SQL, [descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros], (error, result) => {
         if (error) {
             console.log(error);
           } else {
