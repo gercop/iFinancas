@@ -91,11 +91,9 @@ function App() {
         <button className="register-button" onClick={() => handleClickButton()}>
           Incluir Lançamento
         </button>        
-      </div>                   
-      
-      {typeof listLanc !== "undefined" && listLanc.map(() => {
-        return <Table data={listLanc}/> 
-      })}       
+      </div>                         
+
+      {listLanc.length>0  && <Table data={listLanc}/> }       
       
     </div>
   );
