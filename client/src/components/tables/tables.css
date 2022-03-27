@@ -1,0 +1,28 @@
+.table-container {
+    width: 700px;      
+    border: 3px solid #000000;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  table th, td {        
+    font: 14px Verdana;
+    align-items: ceter;
+    border: 1px solid black;
+    text-align: center;    
+    padding: 3px;    
+    width: 160px;    
+  }
+
+  tbLancamentos {    
+    font: 14px Verdana;
+    align-items: ceter;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+
+  
+  

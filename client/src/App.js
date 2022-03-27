@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import Axios from "axios";
 import Card from "./components/cards/cards.js";
+import Table from "./components/tables/tables.js";
+import NumberFormat from 'react-number-format';
+import { currencyFormat } from "./lib/general"
 
 function App() {
 
   const [values, setValues] = useState();
-  const [listLanc, setListLanc] = useState([]);
-
+  const [listLanc, setListLanc] = useState([]);    
+  console.log(listLanc);
+  
   useEffect( ()=> {
     Axios.get("http://localhost:3001/getLancsMes").then( (response)=>{
       setListLanc(response.data);
@@ -47,6 +51,12 @@ function App() {
       ])
     });
   };
+
+  const data1 = [
+    {id:1, name: 'teste1', last: 'faria1'},
+    {id:2, name: 'teste2', last: 'faria2'},
+    {id:3, name: 'teste3', last: 'faria3'},
+  ]
   
   return (
     <div className="app-container">
@@ -55,8 +65,7 @@ function App() {
         <input type="text" name="descricao"    placeholder="Descrição do Lançamento" className="register-input" onChange={handleChangeValues} />
         <input type="text" name="dtLancamento" placeholder="Data Lançamento"         className="register-input" onChange={handleChangeValues} />
 
-        <select name="idTipoLancamento" className="register-input" onChange={handleChangeValues} >
-            <option value='0'selected></option>
+        <select name="idTipoLancamento" className="register-input" defaultValue={'1'} onChange={handleChangeValues} >            
             <option value='1'>Receita</option>
             <option value='2'>Despesa</option>
             <option value='3'>Receita Adicional</option>
@@ -68,37 +77,26 @@ function App() {
             <option value='9'>Renda Passiva</option>          
         </select>
 
-        <select name="idConta" className="register-input" onChange={handleChangeValues} >
-            <option value='0'selected></option>
+        <select name="idConta" className="register-input" defaultValue={'1'} onChange={handleChangeValues} >            
             <option value='1'>Conta Corrente</option>
             <option value='2'>Conta Poupança</option>
         </select>
 
-        <select name="idUsuario" className="register-input" onChange={handleChangeValues} >
-            <option value='0'selected></option>
+        <select name="idUsuario" className="register-input" defaultValue={'1'} onChange={handleChangeValues} >         
             <option value='1'>Ricardo</option>         
         </select>        
         
-        <input type="text" name="valor"             placeholder="Valor"                   className="register-input-real" onChange={handleChangeValues} />
-        <input type="text" name="juros"             placeholder="Juros"                   className="register-input-real" onChange={handleChangeValues} />
+        <input type="text" name="valor" placeholder="Valor" className="register-input-real" onChange={handleChangeValues} />
+        <input type="text" name="juros" placeholder="Juros" className="register-input-real" onChange={handleChangeValues} />
         <button className="register-button" onClick={() => handleClickButton()}>
           Incluir Lançamento
         </button>        
-      </div>   
-            
-      {typeof listLanc !== "undefined" && listLanc.map((value) => {
-        return <Card
-            key           = {value.idLancamento} 
-            idLancamento  = {value.idLancamento}
-            meses         = {value.meses}
-            descricao     = {value.descricao}
-            dtLancamento  = {value.dtLancamento}            
-            valor         = {value.valor}
-            juros         = {value.juros}
-            listLanc      = {listLanc} 
-            setListLanc   = {setListLanc}
-          />
-      })}
+      </div>                   
+      
+      {typeof listLanc !== "undefined" && listLanc.map(() => {
+        return <Table data={listLanc}/> 
+      })}       
+      
     </div>
   );
 }
