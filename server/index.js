@@ -17,7 +17,7 @@ app.use(cors());
 app.use(cors());
 app.use(express.json());
 
-app.get("/getLancsMes", (req,res)=> {
+app.get("/getLancsMesTotal", (req,res)=> {
     const idLancamento     = req.body.idLancamento;
     const descricao        = req.body.descricao;
     const dtLancamento     = req.body.dtLancamento;
@@ -44,6 +44,60 @@ app.get("/getLancsMes", (req,res)=> {
                " GROUP BY month(dtLancamento) \n" +   
                " ORDER BY dtLancamento; \n";
                console.log(SQL);
+    db.query(SQL, (error, result) => {
+        if (error) {
+            console.log(error);
+            res.send(result);
+        } else {
+            console.log("Registro(s) encontrado(s).");
+            res.send(result);
+        }
+    });
+});
+
+app.get("/getLancsMes", (req,res)=> {    
+    const meses                 = req.body.meses;
+    const dtLancamento          = req.body.dtLancamento;
+    const receitas              = req.body.receitas;
+    const despesas              = req.body.despesas;
+    const despesas_isentas      = req.body.despesas_isentas;
+    const receitas_adicionais   = req.body.receitas_adicionais;
+    const valor_liquido         = req.body.valor_liquido;
+    
+    let SQL  = "SELECT idLancamento, \n" + 
+               "       case when meses=1  then 'Janeiro' \n" +
+               "            when meses=2  then 'Fevereiro' \n" +
+               "            when meses=3  then 'Março' \n" +
+               "            when meses=4  then 'Abril' \n" +
+               "            when meses=5  then 'Maio' \n" +
+               "            when meses=6  then 'Junho' \n" +
+               "            when meses=7  then 'Julho' \n" +
+               "            when meses=8  then 'Agosto' \n" +
+               "            when meses=9  then 'Setembro' \n" +
+               "            when meses=10 then 'Outubro' \n" +
+               "            when meses=11 then 'Novembro' \n" +
+               "            when meses=12 then 'Dezembro'	end as meses, \n" +               
+               "       sum(receitas) as receitas, \n" +
+               "       sum(despesas) as despesas,  \n" + 
+               "       sum(despesas_isentas) as despesas_isentas, \n" + 
+               "       sum(receitas_adicionais) as receitas_adicionais, \n" + 
+               "       sum(liquido) as valor_liquido \n" +
+               " FROM ( \n " +
+	           "    SELECT idLancamento,month(dtLancamento) as meses, round(sum(valor),2) as receitas, 0 as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n"+
+	           "       FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (1) GROUP BY month(dtLancamento) \n" + 
+               "    UNION ALL \n" + 
+	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, round(abs(sum(valor)),2) as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (2) GROUP BY month(dtLancamento) \n" + 
+	           "    UNION ALL \n" + 
+	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, round(sum(valor),2) as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (4) GROUP BY month(dtLancamento) \n" + 
+	           "    UNION ALL \n" + 
+	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, 0 as despesas_isentas, round(sum(valor),2) as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (3,9) GROUP BY month(dtLancamento) \n" + 
+               " ) todas \n" +                
+               " GROUP BY meses \n" + 
+               " ORDER BY meses";
+    
     db.query(SQL, (error, result) => {
         if (error) {
             console.log(error);

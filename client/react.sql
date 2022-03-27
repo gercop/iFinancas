@@ -159,7 +159,7 @@ from (
 	SELECT dtLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, 0 as despesas_isentas, round(sum(valor),2) as receitas_adicionais, round(sum(valor),2) as liquido
 	FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (3,9) GROUP BY month(dtLancamento)
 ) todas
-WHERE year(dtLancamento)>2021
+-- WHERE year(dtLancamento)>2021
 GROUP BY meses
 ORDER BY dtLancamento;
   
@@ -183,5 +183,78 @@ where 1=1
 	-- and month(dtLancamento)=3
     -- and idTipoLancamento=2    
 order by dtLancamento;	 
+
+      <p className="card-category">{props.meses}</p>   
+
+            <h3 className="card-cost">R${props.receitas}</h3>            
+            <h3 className="card-cost">R${props.despesas}</h3>
+            <h3 className="card-cost">R${props.despesas_isentas}</h3>
+            <h3 className="card-cost">R${props.receitas_adicionais}</h3>
+            <h3 className="card-cost">R${props.valor_liquido}</h3>
+
+      
+      
+      <td> {props.meses} </td>                                                
+                <td> {currencyFormat(props.receitas)} </td>
+                <td> {currencyFormat(props.despesas)} </td>
+                <td> {currencyFormat(props.despesas_isentas)} </td>
+                <td> {currencyFormat(props.receitas_adicionais)} </td>                            
+                <td> {currencyFormat(props.valor_liquido)} </td>                           
+                
+                
+                
+                function Tables({props}) {    
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickLanc = () => {
+        setOpen(true);
+    }
+
+    return (
+        
+        <div className="table-container" onClick={() => handleClickLanc()}>           
+            <table classame="tbLancamentos">
+                <thead>
+                    <tr>
+                        <td> <strong>Mês</strong></td>
+                        <td> <strong>Receitas</strong></td>
+                        <td> <strong>Despesas</strong></td>
+                        <td> <strong>Desp. Isentas</strong></td>
+                        <td> <strong>Rec. Adicionais</strong></td>
+                        <td> <strong>Valor Líquido</strong></td>
+                    </tr>                        
+                </thead>                                
+                <tbody>                          
+                    <tr>                
+                        props.map(record => {
+                            return (
+                                <tr
+                            )
+                        }  
+                        <td> {props.meses} </td>                                                
+                        <td> {currencyFormat(props.receitas)} </td>
+                        <td> {currencyFormat(props.despesas)} </td>
+                        <td> {currencyFormat(props.despesas_isentas)} </td>
+                        <td> {currencyFormat(props.receitas_adicionais)} </td>                            
+                        <td> {currencyFormat(props.valor_liquido)} </td>                            
+                    </tr>                               
+                </tbody>
+            </table>
+      </div>    
+    ) 
+}
+
+
+key                 = {value.meses}            
+            dtLancamento        = {value.dtLancamento}
+            meses               = {value.meses}     
+            receitas            = {value.receitas}
+            despesas            = {value.despesas}
+            despesas_isentas    = {value.despesas_isentas}
+            receitas_adicionais = {value.receitas_adicionais}
+            valor_liquido       = {value.valor_liquido}            
+            listLanc            = {listLanc} 
+            setListLanc         = {setListLanc}
 
 
