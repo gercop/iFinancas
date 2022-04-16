@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
 import Axios from "axios";
-import Card from "./components/cards/cards.js";
-import Table from "./components/tables/tables.js";
+import Card from "./comps/cards/cards.js";
+import Table from "./comps/tables/tables.js";
 import NumberFormat from 'react-number-format';
-import { currencyFormat } from "./libs/general";
+import {currencyFormat} from "./libs/general";
 import iconeMain from './figs/main.png'
 
 function App() {
