@@ -14,7 +14,7 @@ function App() {
   console.log(listLanc);
   
   useEffect( ()=> {
-    Axios.get("http://localhost:3001/getLancamentosMes").then( (response)=>{
+    Axios.get("http://localhost:3001/getLancamentosAnualPorMes").then( (response)=>{
       setListLanc(response.data);
     });
   }, []);
@@ -80,7 +80,7 @@ function App() {
           
           <h1 className="register-title"> Demonstrativo Anual de Lançamentos</h1>          
 
-          {listLanc.length > 0  && <Table data={listLanc}/> } 
+          {listLanc.length > 0  && <Table className="table-demonstrativo" data={listLanc}/> } 
         </div>  
       </div>
     </div>

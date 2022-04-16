@@ -20,6 +20,7 @@ const Table = ({ data }) => {
         <thead>
             <tr>
                 <td> <strong>ID</strong></td>
+                <td> <strong>Data Lançamento</strong></td>
                 <td> <strong>Mês</strong></td>
                 <td> <strong>Receitas</strong></td>
                 <td> <strong>Despesas</strong></td>
