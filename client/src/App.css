@@ -1,6 +1,9 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding-left: 2px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .app-main .app-header {
@@ -9,8 +12,7 @@
   flex-direction: row;  
   background-color: white;
   font-size: small;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
 }
 
 .app-main .app-header #iconeMain {
@@ -20,23 +22,21 @@
 }
 
 .app-main .app-header #titleMain {
-  width: 100%;  
-  padding-right: 20px;
-  padding-top: 3.5px;
+  width: 100%;    
+  padding-top: 8px;
   background-color: white;
 }
 
 .app-main .app-container {
   width: 100%;
   display: flex;  
-  flex-direction: row;  
-  /*background-color: yellow; */
+  flex-direction: row;    
 }
 
 .app-main .app-container .app-container-menu {  
   width: 15%;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   float: left;
   align-items: center;
   flex-direction: column;  
@@ -117,10 +117,4 @@
 .app-main .app-container .app-container-content .register-button {
   padding: 2px 5px;
   display: inline-block;
-}
-
-.app-main .app-container .app-container-content .table-demonstrativo {
-  align-items: center;
-  align-self: center;
-  align-content: center;  
 }

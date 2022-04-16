@@ -55,8 +55,8 @@ function App() {
 
   return (
 
-    <div className="app-main"> 
-    
+    <div className="app-main">     
+
       <div className="app-header">
         <img id="iconeMain" src={iconeMain}/>
         <h1 id="titleMain"> SISTEMA FINANCEIRO PESSOAL</h1>
@@ -80,7 +80,7 @@ function App() {
           
           <h1 className="register-title"> Demonstrativo Anual de Lançamentos</h1>          
 
-          {listLanc.length > 0  && <Table className="table-demonstrativo" data={listLanc}/> } 
+          {listLanc.length > 0  && <Table data={listLanc}/> } 
         </div>  
       </div>
     </div>
