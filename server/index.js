@@ -64,7 +64,7 @@ app.get("/getLancamentosMes", (req,res)=> {
     const receitas_adicionais   = req.body.receitas_adicionais;
     const valor_liquido         = req.body.valor_liquido;
     
-    let SQL  = "SELECT idLancamento, \n" + 
+    let SQL  = "SELECT idLancamento,  \n" + 
                "       case when meses=1  then 'Janeiro' \n" +
                "            when meses=2  then 'Fevereiro' \n" +
                "            when meses=3  then 'Março' \n" +
