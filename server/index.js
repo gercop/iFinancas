@@ -55,7 +55,7 @@ app.get("/getLancamentosMesTotal", (req,res)=> {
     });
 });
 
-app.get("/getLancamentosMes", (req,res)=> {    
+app.get("/getLancamentosAnualPorMes", (req,res)=> {    
     const meses                 = req.body.meses;
     const dtLancamento          = req.body.dtLancamento;
     const receitas              = req.body.receitas;
@@ -65,6 +65,7 @@ app.get("/getLancamentosMes", (req,res)=> {
     const valor_liquido         = req.body.valor_liquido;
     
     let SQL  = "SELECT idLancamento,  \n" + 
+               "       DATE_FORMAT(dtLancamento,'%d/%m/%Y'), \n" +
                "       case when meses=1  then 'Janeiro' \n" +
                "            when meses=2  then 'Fevereiro' \n" +
                "            when meses=3  then 'Março' \n" +
@@ -76,27 +77,35 @@ app.get("/getLancamentosMes", (req,res)=> {
                "            when meses=9  then 'Setembro' \n" +
                "            when meses=10 then 'Outubro' \n" +
                "            when meses=11 then 'Novembro' \n" +
-               "            when meses=12 then 'Dezembro'	end as meses, \n" +               
+               "            when meses=12 then 'Dezembro'	end as mesesName, \n" +               
                "       sum(receitas) as receitas, \n" +
                "       sum(despesas) as despesas,  \n" + 
                "       sum(despesas_isentas) as despesas_isentas, \n" + 
                "       sum(receitas_adicionais) as receitas_adicionais, \n" + 
                "       sum(liquido) as valor_liquido \n" +
                " FROM ( \n " +
-	           "    SELECT idLancamento,month(dtLancamento) as meses, round(sum(valor),2) as receitas, 0 as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n"+
-	           "       FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (1) GROUP BY month(dtLancamento) \n" + 
+	           "    SELECT idLancamento,dtLancamento,month(dtLancamento) as meses, round(sum(valor),2) as receitas, 0 as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n"+
+	           "       FROM db_pessoal.TB_LANCAMENTO \n"+
+               "       WHERE idTipoLancamento in (1) and YEAR(CURDATE())=YEAR(dtLancamento) \n" +
+               "       GROUP BY month(dtLancamento) \n" + 
                "    UNION ALL \n" + 
-	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, round(abs(sum(valor)),2) as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
-	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (2) GROUP BY month(dtLancamento) \n" + 
-	           "    UNION ALL \n" + 
-	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, round(sum(valor),2) as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
-	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (4) GROUP BY month(dtLancamento) \n" + 
-	           "    UNION ALL \n" + 
-	           "    SELECT idLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, 0 as despesas_isentas, round(sum(valor),2) as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
-	           "        FROM db_pessoal.TB_LANCAMENTO where idTipoLancamento in (3,9) GROUP BY month(dtLancamento) \n" + 
-               " ) todas \n" +                
+	           "    SELECT idLancamento,dtLancamento,month(dtLancamento) as meses, 0 as receitas, round(abs(sum(valor)),2) as despesas, 0 as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+	           "       FROM db_pessoal.TB_LANCAMENTO \n"+
+               "       WHERE idTipoLancamento in (2) and YEAR(CURDATE())=YEAR(dtLancamento) \n" +               
+               "       GROUP BY month(dtLancamento) \n" + 
+               "    UNION ALL \n" + 
+	           "    SELECT idLancamento,dtLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, round(sum(valor),2) as despesas_isentas, 0 as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+	           "       FROM db_pessoal.TB_LANCAMENTO \n"+
+               "       WHERE idTipoLancamento in (4) and YEAR(CURDATE())=YEAR(dtLancamento) \n" +               
+               "       GROUP BY month(dtLancamento) \n" + 
+               "    UNION ALL \n" + 
+	           "    SELECT idLancamento,dtLancamento,month(dtLancamento) as meses, 0 as receitas, 0 as despesas, 0 as despesas_isentas, round(sum(valor),2) as receitas_adicionais, round(sum(valor),2) as liquido \n" + 
+               "       FROM db_pessoal.TB_LANCAMENTO \n"+
+               "       WHERE idTipoLancamento in (3,9) and YEAR(CURDATE())=YEAR(dtLancamento) \n" +               
+               "       GROUP BY month(dtLancamento) \n" +                
+               " ) todas \n" +                  
                " GROUP BY meses \n" + 
-               " ORDER BY meses";
+               " ORDER BY dtLancamento ";
 
     
     db.query(SQL, (error, result) => {
