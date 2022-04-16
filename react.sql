@@ -75,8 +75,15 @@ CREATE TABLE db_pessoal.TB_TIPO_LANCAMENTO (
     descricao VARCHAR(60) NOT NULL
 );
 
-SELECT * FROM db_pessoal.TB_LANCAMENTO where idLancamento>=30;	 
-INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('teste','2022-03-27',1,1,1,0.25,0.5);
+SELECT * FROM db_pessoal.TB_LANCAMENTO; -- where idLancamento>=30;	 
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Plano de Saúde Unimed','2022-03-31',2,1,1,-439.27,0.0);
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-04-01',9,2,1,308.14,0.5976);
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Adicional','2022-04-01',1,1,1,2000.0,0.0);
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-04-02',9,2,1,625.31,0.6304);
+
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-04-02',9,1,1,11.60,0.6304);
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-04-02',9,2,1,625.31,0.6304);
+INSERT INTO db_pessoal.TB_LANCAMENTO (descricao,dtLancamento,idTipoLancamento,idConta,idUsuario,valor,juros) VALUES ('Renda Passiva','2022-04-05',9,1,1,-0.43,0.0);
 DELETE FROM db_pessoal.TB_LANCAMENTO WHERE idLancamento>=31;	 
 DROP TABLE db_pessoal.TB_LANCAMENTO;
 CREATE TABLE db_pessoal.TB_LANCAMENTO (	  
@@ -103,6 +110,7 @@ where 1=1
 	-- and month(dtLancamento) in (12,1,2,3)
     -- and idTipoLancamento=3
     -- and idConta in (2)
+group by idConta    
 order by dtLancamento;	 
 
 -- LANÇAMENTO LÍQUIDO POR MÊS:
@@ -183,78 +191,3 @@ where 1=1
 	-- and month(dtLancamento)=3
     -- and idTipoLancamento=2    
 order by dtLancamento;	 
-
-      <p className="card-category">{props.meses}</p>   
-
-            <h3 className="card-cost">R${props.receitas}</h3>            
-            <h3 className="card-cost">R${props.despesas}</h3>
-            <h3 className="card-cost">R${props.despesas_isentas}</h3>
-            <h3 className="card-cost">R${props.receitas_adicionais}</h3>
-            <h3 className="card-cost">R${props.valor_liquido}</h3>
-
-      
-      
-      <td> {props.meses} </td>                                                
-                <td> {currencyFormat(props.receitas)} </td>
-                <td> {currencyFormat(props.despesas)} </td>
-                <td> {currencyFormat(props.despesas_isentas)} </td>
-                <td> {currencyFormat(props.receitas_adicionais)} </td>                            
-                <td> {currencyFormat(props.valor_liquido)} </td>                           
-                
-                
-                
-                function Tables({props}) {    
-
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickLanc = () => {
-        setOpen(true);
-    }
-
-    return (
-        
-        <div className="table-container" onClick={() => handleClickLanc()}>           
-            <table classame="tbLancamentos">
-                <thead>
-                    <tr>
-                        <td> <strong>Mês</strong></td>
-                        <td> <strong>Receitas</strong></td>
-                        <td> <strong>Despesas</strong></td>
-                        <td> <strong>Desp. Isentas</strong></td>
-                        <td> <strong>Rec. Adicionais</strong></td>
-                        <td> <strong>Valor Líquido</strong></td>
-                    </tr>                        
-                </thead>                                
-                <tbody>                          
-                    <tr>                
-                        props.map(record => {
-                            return (
-                                <tr
-                            )
-                        }  
-                        <td> {props.meses} </td>                                                
-                        <td> {currencyFormat(props.receitas)} </td>
-                        <td> {currencyFormat(props.despesas)} </td>
-                        <td> {currencyFormat(props.despesas_isentas)} </td>
-                        <td> {currencyFormat(props.receitas_adicionais)} </td>                            
-                        <td> {currencyFormat(props.valor_liquido)} </td>                            
-                    </tr>                               
-                </tbody>
-            </table>
-      </div>    
-    ) 
-}
-
-
-key                 = {value.meses}            
-            dtLancamento        = {value.dtLancamento}
-            meses               = {value.meses}     
-            receitas            = {value.receitas}
-            despesas            = {value.despesas}
-            despesas_isentas    = {value.despesas_isentas}
-            receitas_adicionais = {value.receitas_adicionais}
-            valor_liquido       = {value.valor_liquido}            
-            listLanc            = {listLanc} 
-            setListLanc         = {setListLanc}
-
-

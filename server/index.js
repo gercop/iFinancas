@@ -17,7 +17,7 @@ app.use(cors());
 app.use(cors());
 app.use(express.json());
 
-app.get("/getLancsMesTotal", (req,res)=> {
+app.get("/getLancamentosMesTotal", (req,res)=> {
     const idLancamento     = req.body.idLancamento;
     const descricao        = req.body.descricao;
     const dtLancamento     = req.body.dtLancamento;
@@ -55,7 +55,7 @@ app.get("/getLancsMesTotal", (req,res)=> {
     });
 });
 
-app.get("/getLancsMes", (req,res)=> {    
+app.get("/getLancamentosMes", (req,res)=> {    
     const meses                 = req.body.meses;
     const dtLancamento          = req.body.dtLancamento;
     const receitas              = req.body.receitas;
@@ -97,6 +97,7 @@ app.get("/getLancsMes", (req,res)=> {
                " ) todas \n" +                
                " GROUP BY meses \n" + 
                " ORDER BY meses";
+
     
     db.query(SQL, (error, result) => {
         if (error) {

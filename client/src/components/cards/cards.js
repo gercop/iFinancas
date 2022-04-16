@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./cards.css";
 import FormDialog from "../dialog/dialog";
 import NumberFormat from 'react-number-format';
-import { currencyFormat } from "../../lib/general"
+import { currencyFormat } from "../../libs/general"
 
 export default function Card(props) {    
 

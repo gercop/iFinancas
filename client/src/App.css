@@ -3,13 +3,84 @@
   padding: 0;
 }
 
-.app-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.app-main .app-header {
+  width: 100%;
+  display: flex;  
+  flex-direction: row;  
+  background-color: white;
+  font-size: small;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
 }
 
-.register-container {
+.app-main .app-header #iconeMain {
+  width: 40px;  
+  padding-right: 20px;
+  background-color: white;
+}
+
+.app-main .app-header #titleMain {
+  width: 100%;  
+  padding-right: 20px;
+  padding-top: 3.5px;
+  background-color: white;
+}
+
+.app-main .app-container {
+  width: 100%;
+  display: flex;  
+  flex-direction: row;  
+  /*background-color: yellow; */
+}
+
+.app-main .app-container .app-container-menu {  
+  width: 15%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  align-items: center;
+  flex-direction: column;  
+}
+
+.app-main .app-container .app-container-menu ul li {
+  margin: 0; 
+  border: 0px;
+  padding: 2px;  
+  text-align: center;
+  list-style-type: none;
+  background-color: white;  
+}
+
+.app-main .app-container .app-container-menu a {  
+  color: blue;  
+  border-radius: 300px;
+  background-color: #87cefa;  
+}
+
+.app-main .app-container .app-container-menu a:link {
+  background: #F5F5F5;
+  color: #666;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px;
+  display: block;
+}
+
+.app-main .app-container .app-container-menu a:hover {
+  background: blue;
+  color: white;
+}
+
+.app-main .app-container .app-container-content {
+  width: 85%;
+  float: right;
+	text-align: center;
+  background-color:#c8e7fa; /*#f6ecf7;*/
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.app-main .app-container .app-container-content .register-container {
   padding: 10px 20px;
   width: max-content;
   height: max-content;
@@ -21,27 +92,29 @@
   text-align: center
 }
 
-.register-title {
+.app-main .app-container .app-container-content .register-title {
   text-align: center;
   margin-bottom: 20px;
   font-family: fantasy;
+  font-size: x-large;  
+  font-weight:lighter;
 }
 
-.register-input {
+.app-main .app-container .app-container-content .register-input {
+  width: 500px;
+  display: block;
+  margin: 10px auto;
+  padding: 7px 0;  
+}
+
+.app-main .app-container .app-container-content .register-input-real {
   width: 500px;
   display: block;
   margin: 10px auto;
   padding: 7px 0;
 }
 
-.register-input-real {
-  width: 500px;
-  display: block;
-  margin: 10px auto;
-  padding: 7px 0;
-}
-
-.register-button {
+.app-main .app-container .app-container-content .register-button {
   padding: 2px 5px;
   display: inline-block;
 }

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./tables.css";
-import { currencyFormat } from "../../lib/general"
+import { currencyFormat } from "../../libs/general"
 
 const Row = ({ record }) => {
     const keys = Object.keys(record)
